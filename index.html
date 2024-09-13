@@ -1,1 +1,425 @@
-Hello!
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!--
+  Dmytro Tarasiuk
+  taskcalc@membrama.com
+*/
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="uk">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <!--Roboto Font-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <!--/-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>  
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js "></script>
+  <script src="my.js"></script>
+</head>
+<!----------------------------------------------------------------------------------------------->
+<body bgcolor="lightgray">
+  <center>
+    <h1>Калькулятор індивідуального завдання</h1>
+    <fieldset class="fset-main">
+      <legend class="fset-legend">
+        <table>
+          <tr>
+            <td>Студент(-ка):</td>
+            <td>Лаб.№</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><input id="inp-fullname" class="inp-fullname" type="text" placeholder="Ім'я Призвіще" size="20"/></td>
+            <td>
+              <select id="sel-widn" class="sel-widn">
+                <option selected>01</option>
+                <option>02</option>
+                <option>03</option>
+                <option>04</option>
+                <option>05</option>
+                <option>06</option>
+                <option>07</option>
+                <option>08</option>
+                <option>09</option>
+                <option>10</option>
+                <option>КР</option>
+                <option>ЕКЗ</option>
+              </select>    
+            </td>
+            <td><button id="button-gen" class="button-gen">OK</button></td>
+          </tr>
+          </tbody>
+        </table>
+      </legend>
+      <div id="content" class="content">
+        <h2>Як отримати свій варіант завдання?</h2>
+        1. Введіть спочатку ім'я, а потім призвіще українською мовою.<br>
+        2. Виберіть номер лабораторно-практичної роботи.<br>
+        3. Натисніть [OK] щоб отримати індивідуальні параметри завдання.
+      </div>
+    </fieldset>
+   </center>
+</body>
+<!----------------------------------------------------------------------------------------------->
+<script>
+  function rand_range(rand, from, to) {
+    return rand() * (to - from) + from; // [from,to)
+  }
+</script>
+
+<script>
+  /////////////////////////////////////////////////////////////////// ЛР 01 ///
+  function lab_pract_01(rand) {
+    console.log('Лабораторно-практична робота №1');
+    const randge = function(from, to) { return rand_range(rand, from, to); }
+    const smm_min = randge(1, 1.05);
+    var smm_max = smm_min;
+    const w1 = randge(Math.tan(Math.PI / 2.2), Math.tan(Math.PI / 2.1));
+    const w0 = randge(45.5, 54.5) - w1 * smm_min;
+    var sale = w0;
+    var smm = smm_min;
+    var df = '';
+    var dfht = '<div class="content01-div">'+
+    '<table class="content01-table">'
+    + '<tr>'
+    +    '<th>Місяць</th>'
+    +    '<th>SMM</th>'
+    +    '<th>SALE</th>'
+    +  '</tr>';
+    for (var i = 1; i <= 10; ++i) {
+      sale = w0 + w1 * smm + randge(-w1*0.1, w1*0.1);
+      if (i > 1) df += ', ';
+      df += `[${smm.toFixed(2)}, ${sale.toFixed(0)}]`;
+      dfht +=
+         '<tr>'
+      +    `<th>${i}</th>`
+      +    `<td>${smm.toFixed(2)}</td>`
+      +    `<td>${sale.toFixed(2)}</td>`
+      +  '</tr>'
+      smm_max = smm;
+      smm += randge(0.05, 0.1);
+    }
+    dfht += '</table>';
+    const x_smm = randge((smm_min + smm_max)/2, smm_max - 0.04);
+    dfht += `<h3>N = ${x_smm.toFixed(2)}</h3>`;
+    dfht += '</div>';
+    $('#content').html(dfht)
+    console.log(df);
+    console.log(`N = ${x_smm.toFixed(2)}`);
+  }
+</script>
+
+<script>
+  /////////////////////////////////////////////////////////////////// ЛР 02 ///
+  function lab_pract_02(rand) {
+    console.log('Лабораторно-практична робота №2');
+    const randge = function(from, to) { return rand_range(rand, from, to); }
+    var digit_a = Math.floor(randge(0,10))
+    var digit_b = Math.floor(randge(0,10))
+    while (digit_a == digit_b)
+      digit_b = Math.floor(randge(0,10));
+    var dfht = '<div class="content01-div">'
+      +   '<h2>A = ' + digit_a + '</h2>'
+      +   '<h2>B = ' + digit_b + '</h2>'
+      + '</div>';
+    $('#content').html(dfht);
+    console.log(`A={digit_a}, B={digit_b}`);
+  }
+</script>
+
+<script>
+  /////////////////////////////////////////////////////////////////// ЛР 03 ///
+  function lab_pract_03(rand) {
+    console.log('Лабораторно-практична робота №3');
+    const randge = function(from, to) { return rand_range(rand, from, to); }
+    var min_corr = randge(0.3,0.5).toFixed(3);
+    var dfht = '<div class="content01-div">'
+      +   '<h2>Мінімальна кореляція: ' + min_corr + '</h2>'
+      + '</div>';
+    $('#content').html(dfht);
+    console.log(`min_corr={min_corr}`);
+  }
+</script>
+
+<script>
+  /////////////////////////////////////////////////////////////////// ЛР 04 ///
+  function lab_pract_04(rand) {
+    console.log('Лабораторно-практична робота №4');
+    const randge = function(from, to) { return rand_range(rand, from, to); }
+    const s = Math.floor(randge(1.,5.9));
+    var v = '<a href="AIS_W04.ipynb">AIS_W04.ipynb</a><hr>'
+    switch(s) {
+      case 1: v += 'Дощ -> осінь<br>Сніг -> ?'; break;
+      case 2: v += 'Мама -> Тато<br>Сестра -> ?'; break;
+      case 3: v += 'Осло -> Норвегія<br>Бухарест -> ?'; break;
+      case 4: v += 'Південь -> Північ<br>Захід -> ?'; break;
+      case 5: v += 'Стопка -> Горілка<br>Філіжанка -> ?'; break;
+    }
+    v += '<hr>Сумаризація тексту № ' + Math.floor(randge(2.,8.9))
+    var dfht = '<div class="content01-div">'
+      + v
+      + '</div>';
+    $('#content').html(dfht);
+    console.log(v);
+  }
+</script>
+
+<script>
+  /////////////////////////////////////////////////////////////////// ЛР 06 ///
+  function lab_pract_06(rand) {
+    console.log('Лабораторно-практична робота №6');
+    const randge = function(from, to) { return rand_range(rand, from, to); }
+    const test_questions =[
+      'Make a scientific discovery for me!',
+      'Is the world a simulation?',
+      'Where do elephants live?',
+      'What is the highest peak on Earth?',
+      'Where is the center of the universe?',
+      'Do you like flowers?',
+      'How to conquer the world',
+      'Will you steal my job?',
+      'Do you play chess?',
+      'Sing me a song!',
+      'Who lives on Mars?'
+    ];
+    n = Math.trunc(randge(0, test_questions.length));
+    var dfht = '<div class="content01-div">'
+      + '<a href="dataset_w06.zip">dataset_w06.zip</a><hr>'
+      + test_questions[n]
+      + ''
+      + '</div>';
+    $('#content').html(dfht);
+    console.log(test_questions[n]);
+  }
+</script>
+
+<script>
+  /////////////////////////////////////////////////////////////////// ЛР 07 ///
+  function lab_pract_07(rand) {
+    console.log('Лабораторно-практична робота №7');
+    const randge = function(from, to) { return rand_range(rand, from, to); }
+    var dfht = '<div class="content01-div">'+
+    '<table class="content01-table">'
+    + '<tr>'
+    +    '<th>Довжина</th>'
+    +    '<th>Ширина</th>'
+    +    '<th>Клас</th>'
+    +  '</tr>';
+    var len, len1, width, cls;
+    var thumb = 1.;
+    for (var i = 1; i <= 15; ++i) {
+      if (randge(0., thumb) < 0.5) {
+        thumb /= 0.8;
+        cls = 'гусінь';
+        len = randge(5., 100.);
+        len1 = len + randge(0., 2.);
+        width = len1 / (5. + (len1 - 5.) / 23.);
+      } else {
+        thumb *= 0.8;
+        cls = 'жук';
+        len = randge(5., 15.);
+        len1 = len + randge(0., 3.);
+        width = len1 * 0.75;
+      } 
+      dfht +=
+          '<tr>'
+        +    `<td>${len.toFixed(0)}</td>`
+        +    `<td>${width.toFixed(0)}</td>`
+        +    `<td>${cls}</td>`
+        +  '</tr>';
+    }
+    dfht += '</table>';
+    dfht += '</div>';
+    $('#content').html(dfht)
+  }
+</script>
+
+<script>
+  function copy_to_clipboard(text) {
+    navigator.clipboard.writeText(text).then(function () {
+      alert('Скопійовано! Використайте CTRL-V щоб вставити в Google Colab або деінде!')
+    }, function () {
+      alert('Не скопійовано. Перевірте дозволи для clipboard')
+    });
+  }
+</script>
+
+<script>
+  /////////////////////////////////////////////////////////////////// ЛР 08 ///
+  function lab_pract_08(rand) {
+    console.log('Лабораторно-практична робота №8');
+    const randge = function(from, to) { return rand_range(rand, from, to); }
+
+    function gauss_rand(mean=0, stdev=1) {
+      const u = 1 - rand(); // converting [0,1) to (0,1]
+      const v = rand();
+      const z = Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v);
+      // Transform to the desired mean and standard deviation:
+      return z * stdev + mean;
+    }
+
+    const N = 101;
+    var i, v;
+    var df_age = [];
+    var avg_age = 0;
+    var df_income = [];
+    var avg_income = 0;
+    var max_income = 0;
+    var df_penalty = [];
+
+    for (i = 0; i < N; ++i) {
+      // Вік
+      v = Math.round(Math.abs(gauss_rand(25,35)));
+      if (v < 19 || v > 89) v = Math.round(20+rand()*5);
+      avg_age += v;
+      df_age.push(v);
+      //  Щомісячний дохід
+      v = Math.round(Math.abs(gauss_rand(5000,3000)));
+      avg_income += v;
+      if (max_income < v) max_income = v;
+      df_income.push(v);
+      // Штрафи за невчасне повернення минулих кредитів
+      v = gauss_rand(-0.29,0.35);
+      if (v < 0) v = 0;
+      df_penalty.push(Math.round(v * 100) / 100);
+    }
+    avg_age /= N; // ~38
+    avg_income /= N;
+
+    function estim() {
+      ack = [];
+      income_thresh = max_income * 2 / 3;
+      for (var i = 0; i < N; ++i) {
+        if (df_income[i] > income_thresh)
+          ack.push(2);
+        else if (df_penalty[i] > 0.24)
+          ack.push(0);
+        else if ((df_age[i] / avg_age) * (df_income[i] / avg_income) / (1 + df_penalty[i]) < 0.5)
+          ack.push(0);
+        else
+          ack.push(1);
+      }
+      return ack;
+    }
+
+    df_ack = estim();
+    const df = `df = pd.DataFrame({'age': [${df_age}],` + '\n' +
+               `                   'income': [${df_income}],` + '\n' +
+               `                   'penalty': [${df_penalty}],` + '\n' +
+               `                   'ack': [${df_ack}]})`;
+    console.log(df);
+
+    var dfht = '<div class="content01-div">'
+    dfht += '<button class="content01-button" id="lab_pract_08_clipboard">Копіювати в Clipboard</button>';
+    dfht += '<table class="content01-table">'
+      + '<tr>'
+      +    '<th>№</th>'
+      +    '<th>Вік</th>'
+      +    '<th>Дохід</th>'
+      +    '<th>Штрафи</th>'
+      +    '<th>Оцінка</th>'
+      +  '</tr>';
+    for (i = 0; i < N; ++i) {
+      dfht += '<tr>'
+        +    `<th>${i+1}</th>`
+        +    `<td>${df_age[i]}</td>`
+        +    `<td>${df_income[i]}</td>`
+        +    `<td>${df_penalty[i]}</td>`
+        +    `<td>${['Ні','Бесіда','Так'][df_ack[i]]}</td>`
+        +  '</tr>';
+    } 
+    dfht += '</table>';
+    dfht += '</div>';
+    $('#content').html(dfht);
+    $('#lab_pract_08_clipboard').on('click', function() { copy_to_clipboard(df + '\n'); });
+  }
+</script>
+
+<script>
+  ////////////////////////////////////////////////////////////////////// КР ///
+  function coursework(rand) {
+    console.log('Курсова робота');
+    const randge = function(from, to) { return rand_range(rand, from, to); }
+    const s = Math.floor(randge(1.,5.9));
+    const files = ['rps-awl.png', 'rps-fire.png', 'rps-paper.png', 'rps-rock.png', 'rps-scissors.png', 'rps-sniper.png', 'rps-well.png'];
+    const titles =['Голка', 'Вогонь', 'Папір', 'Камінь', 'Ножиці', 'Снайпер', 'Колодязь'];
+    var v = '';
+    var n = -1;
+    for (var i = 0; i < 3; ++i) {
+      if (n>=0)
+        v += '<hr>';
+      n = Math.trunc(randge(0, files.length));
+      v += `${titles[n]}:<br><img src="${files[n]}" width="50px"> `;
+      files.splice(n,1);
+      titles.splice(n,1);
+    }
+    var dfht = '<div class="content01-div"><center>'
+      + v
+      + '</center></div>';
+    $('#content').html(dfht);
+    console.log(v);
+  }
+</script>
+
+<script>
+  $(function() {
+    console.log("Loaded...");
+    $('#inp-fullname').val(Cookies.get('fullname'));
+    const lab = findGetParameter('lab');
+    $('#sel-widn').val(lab || Cookies.get('widn') || '01');
+
+    $('#button-gen').on('click', function () {
+      const fn = $('#inp-fullname').val().trim().replace(/\s+/g,' ').toUpperCase();
+      if (fn.length == 0) {
+        alert('Немає імені/прізвища!');
+        return;
+      };
+      seedlist = seedlist_4x32(fn)
+      var rand = sfc32(seedlist[0], seedlist[1], seedlist[2], seedlist[3]);
+
+      switch($('#sel-widn').val()) {
+        case '01': lab_pract_01(rand); break;
+        case '02': lab_pract_02(rand); break;
+        case '03': lab_pract_03(rand); break;
+        case '04': lab_pract_04(rand); break;
+        case '05': alert('Зробіть фото для класифікації власноруч відповідно до завдання.'); break;
+        case '06': lab_pract_06(rand); break;
+        case '07': lab_pract_07(rand); break;
+        case '08': lab_pract_08(rand); break;
+        case '09': alert('Дані такі ж самі, як і для лабораторно-практичної роботи №8.');
+          window.location.replace("?lab=08");
+          break;
+        case '10':
+          Cookies.set('fullname', $('#inp-fullname').val());
+          window.location.replace("recommendations.html"); break;
+        case 'КР': coursework(rand); break;
+        case 'ЕКЗ':
+          Cookies.set('fullname', $('#inp-fullname').val());
+          window.location.replace("exam-questions.html"); break;
+        default:
+          alert('Вибачте, ще не готово...');
+          break;
+      }
+    });
+
+    $('#inp-fullname').on('change', function () {
+      Cookies.set('fullname', $('#inp-fullname').val());
+    });
+
+    $('#inp-fullname').keypress(function (e) {
+      var key = e.which;
+      if(key == 13) { // the enter key code
+        $('#button-gen').click();
+        return false; 
+      }
+    });
+
+    $('#sel-widn').on('change', function () {
+      Cookies.set('widn', $('#sel-widn').val());
+    });
+  });
+</script>
+</html>

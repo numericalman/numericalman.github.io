@@ -12,6 +12,10 @@ body {
   font-style: normal;
 }
 
+.h1-main {
+  color: red;
+}
+
 .fset-main {
   background-color: lightgray;
   margin: 50px auto auto auto;

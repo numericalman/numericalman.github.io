@@ -1,5 +1,5 @@
 /* Dmytro Tarasiuk
-   taskcalc@membrama.com
+   numericman@membrama.com
 */
 
 body {
@@ -78,30 +78,3 @@ body {
 .content01-table tr th { background-color: gray; color: white; }
 .content01-table tr:nth-child(odd) { background-color: whitesmoke; }
 .content01-table tr:nth-child(even) { background-color: white; }
-
-.questions-table { text-align: center; max-width: 755px; }
-.questions-table tr:nth-child(odd) { background-color: whitesmoke; }
-.questions-table tr:nth-child(even) { background-color: white; }
-.questions-table tr td { padding: 2px 4px; padding-left: 1.5em; text-align: left; text-indent: -1em; hyphens: auto; }
-.questions-table tr td code { border: green solid 1px; background-color: lightyellow; }
-.questions-table tr th { background-color: gray; color: white; min-width: 35px; }
-
-
-.recommendations-title { margin: 0; padding: 0; text-decoration: underline overline red; }
-.recommendations-task { margin: 5px 0 0 0; padding: 0; background-color: lightskyblue; color: brown;}
-.recommendations-button {
-  margin: auto;
-  font-size: large;
-  border-radius: 15px;
-  border-color: brown;
-}
-.recommendations-table { text-align: center; max-width: 755px; }
-.recommendations-table tr:nth-child(odd) { background-color: whitesmoke; }
-.recommendations-table tr:nth-child(even) { background-color: white; }
-.recommendations-table tr td { padding: 2px 4px; text-align: center; }
-.recommendations-table tr td:hover { padding: 2px 4px; background-color: yellow; cursor:default; }
-.recommendations-table tr:first-child th { padding: 3px 0 3px 5px; writing-mode: vertical-rl; }
-.recommendations-table tr:last-child th { padding: 0 5px; background-color: brown; color: white; min-width: 35px; text-align: right; }
-.recommendations-table tr:first-child th div { padding: 3px 0 3px 5px; writing-mode: vertical-rl; }
-.recommendations-table tr th { padding: 0 5px; background-color: gray; color: white; min-width: 35px; text-align: right; }
-.recommendations-table tr:last-child { box-shadow: 10px 5px 5px red; }

@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <!--
   Dmytro Tarasiuk
@@ -84,13 +84,50 @@
   /////////////////////////////////////////////////////////////////// ЛР 01 ///
   function lab_pract_01() {
     console.log('Лабораторно-практична робота №1');
-    var df = '';
-    var dfht = '<div class="content01-div">'+
-    '<a href="https://colab.research.google.com/drive/1nnnJQwndw07Tf03J9cstVYlGfPrAoeRI?usp=drive_link">'
-    +'Посилання</a> на завдання.';
-    dfht += '</div>';
+    var dfht = '<div class="content01-div">'
+      +   '<a href="https://colab.research.google.com/drive/1nnnJQwndw07Tf03J9cstVYlGfPrAoeRI?usp=drive_link">'
+      +   'Посилання</a> на завдання';
+      + '</div>';
     $('#content').html(dfht)
-    console.log(df);
+  }
+</script>
+
+<script>
+function pad(num, size) {
+  var num = num.toString();
+  while (num.length < size) num = "0" + num;
+  return num;
+}
+</script>
+
+<script>
+  /////////////////////////////////////////////////////////////////// ЛР 02 ///
+  function lab_pract_02(rand) {
+    console.log('Лабораторно-практична робота №2');
+    const randge = function(from, to) { return rand_range(rand, from, to); }
+    const functs = ['2.2*x=2**x',
+                    'x**2=-4*sin(x)',
+                    '5*x=8+8*ln(x)',
+                    '3*x=e**x',
+                    'x*(x+1)**2=-0.05',
+                    'x=(x+1)**3',
+                    'x+0.5=(x+0.5)**3',
+                    'x**2=sin(7*x)',
+                    '2.2+x=sqrt(abs(sin(x+2)))',
+                    'tg(0.4*x+0.4)=x**2',
+                    'sqrt(x)-cos(2.5*x)=0.7'];
+    var n = Math.trunc(randge(0, functs.length));
+    var m = Math.trunc(randge(1, 100));
+    var e = Math.trunc(randge(3, 5+1));
+    var me = '1.'+pad(m,2)+'e-'+e;
+    var dfht = '<div class="content01-div">'
+      +   '<a href="https://colab.research.google.com/drive/1nnnJQwndw07Tf03J9cstVYlGfPrAoeRI?usp=drive_link">'
+      +   'Посилання</a> на завдання'
+      +   '<hr/><b>Ваше рівняння:</b> <i>'+functs[n]+'</i>'
+      +   '<br/><b>Точність рішення:</b> <i>'+me+'</i>'
+      + '</div>';
+    $('#content').html(dfht);
+    console.log('Equotion='+functs[n]+', Eps='+me);
   }
 </script>
 
@@ -112,6 +149,7 @@
 
       switch($('#sel-widn').val()) {
         case '01': lab_pract_01(); break;
+        case '02': lab_pract_02(rand); break;
         default:
           alert('Вибачте, ще не готово...');
           break;

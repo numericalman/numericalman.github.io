@@ -18,6 +18,17 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>  
   <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js "></script>
   <script src="my.js"></script>
+
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]}
+    });
+  </script>
+
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
 </head>
 <!----------------------------------------------------------------------------------------------->
 <body bgcolor="lightgray">
@@ -47,7 +58,7 @@
                 <option>10</option>
                 <!--option>КР</option-->
                 <option>ЕКЗ</option>
-              </select>    
+              </select>
             </td>
             <td><button id="button-gen" class="button-gen">OK</button></td>
           </tr>
@@ -105,17 +116,17 @@ function pad(num, size) {
   function lab_pract_02(rand) {
     console.log('Лабораторно-практична робота №2');
     const randge = function(from, to) { return rand_range(rand, from, to); }
-    const functs = ['2.2*x=2**x',
-                    'x**2=-4*sin(x)',
-                    '5*x=8+8*ln(x)',
-                    '3*x=e**x',
-                    'x*(x+1)**2=-0.05',
-                    'x=(x+1)**3',
-                    'x+0.5=(x+0.5)**3',
-                    'x**2=sin(7*x)',
-                    '2.2+x=sqrt(abs(sin(x+2)))',
-                    'tg(0.4*x+0.4)=x**2',
-                    'sqrt(x)-cos(2.5*x)=0.7'];
+    const functs = ['2.2 x = 2^x',
+                    'x^2 = -4 \\cdot \\sin{x}',
+                    '5 x = 8 + 8 \\cdot \\ln{x}',
+                    '3 x = e^x',
+                    'x (x+1)^2 = -0.05',
+                    'x = (x+1)^3',
+                    'x + 0.5 = (x+0.5)^3',
+                    'x^2 = \\sin(7 x)',
+                    '2.2 + x = \\sqrt{ | \\sin(x+2) | }',
+                    '\\tan{(0.4 x + 0.4)} = x^2',
+                    '\\sqrt{x} - \\cos{(2.5 x)} = 0.7'];
     var n = Math.trunc(randge(0, functs.length));
     var m = Math.trunc(randge(1, 100));
     var e = Math.trunc(randge(3, 5+1));
@@ -123,10 +134,12 @@ function pad(num, size) {
     var dfht = '<div class="content01-div">'
       +   '<a href="https://colab.research.google.com/drive/1Vqk7vj3JNZqxxo78lyflwQEAEsBdhjzo?usp=sharing">'
       +   'Посилання</a> на завдання'
-      +   '<hr/><b>Ваше рівняння:</b> <i>'+functs[n]+'</i>'
+      +   '<hr/><b>Ваше рівняння:</b> $$'+functs[n]+'$$'
       +   '<br/><b>Точність рішення:</b> <i>'+me+'</i>'
       + '</div>';
     $('#content').html(dfht);
+    // MathJax.typeset();
+    MathJax.Hub.Queue(["Typeset",MathJax.Hub,document.getElementById("content")]);
     console.log('Equotion='+functs[n]+', Eps='+me);
   }
 </script>

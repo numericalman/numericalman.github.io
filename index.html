@@ -138,9 +138,96 @@ function pad(num, size) {
       +   '<br/><b>Точність рішення:</b> <i>'+me+'</i>'
       + '</div>';
     $('#content').html(dfht);
-    // MathJax.typeset();
     MathJax.Hub.Queue(["Typeset",MathJax.Hub,document.getElementById("content")]);
     console.log('Equotion='+functs[n]+', Eps='+me);
+  }
+</script>
+
+<script>
+  /////////////////////////////////////////////////////////////////// ЛР 03 ///
+  function lab_pract_03(rand) {
+    console.log('Лабораторно-практична робота №2');
+    const randge = function(from, to) { return rand_range(rand, from, to); }
+    const slaes = [ String.raw`\begin{cases}`
+                  + String.raw`  38x_1+67x_2-12x_3=52, \\`
+                  + String.raw`  64x_1+13x_2-27x_3=38, \\`
+                  + String.raw`  24x_1-45x_2+35x_3=-6. \\`
+                  + String.raw`\end{cases}`,
+                    String.raw`\begin{cases}`
+                  + String.raw`  36x_1+18x_2-47x_3=38, \\`
+                  + String.raw`  27x_1-36x_2+19x_3=4, \\`
+                  + String.raw`  15x_1+45x_2+33x_3=-16. \\`
+                  + String.raw`\end{cases}`,
+                    String.raw`\begin{cases}`
+                  + String.raw`  54x_1-23x_2+34x_3=-35, \\`
+                  + String.raw`  42x_1+17x_2-23x_3=27, \\`
+                  + String.raw`  34x_1+24x_2+74x_3=19. \\`
+                  + String.raw`\end{cases}`,
+                    String.raw`\begin{cases}`
+                  + String.raw`  45x_1-35x_2+74x_3=25, \\`
+                  + String.raw`  31x_1-6x_2-23x_3=-15, \\`
+                  + String.raw`  08x_1+74x_2-5x_3=64. \\`
+                  + String.raw`\end{cases}`,
+                    String.raw`\begin{cases}`
+                  + String.raw`  38x_1+41x_2-23x_3=48, \\`
+                  + String.raw`  -21x_1+39x_2-58x_3=33, \\`
+                  + String.raw`  18x_1+11x_2-21x_3=58. \\`
+                  + String.raw`\end{cases}`,
+                    String.raw`\begin{cases}`
+                  + String.raw`  71x_1+68x_2+61x_3=70, \\`
+                  + String.raw`  50x_1+48x_2+53x_3=61, \\`
+                  + String.raw`  82x_1+78x_2+71x_3=58. \\`
+                  + String.raw`\end{cases}`,
+                    String.raw`\begin{cases}`
+                  + String.raw`  63x_1+52x_2-6x_3=15, \\`
+                  + String.raw`  34x_1-23x_2+34x_3=27, \\`
+                  + String.raw`  8x_1+14x_2+35x_3=-23. \\`
+                  + String.raw`\end{cases}`,
+                    String.raw`\begin{cases}`
+                  + String.raw`  54x_1-24x_2+38x_3=55, \\`
+                  + String.raw`  25x_1+68x_2-11x_3=43, \\`
+                  + String.raw`  27x_1-6x_2+15x_3=-35. \\`
+                  + String.raw`\end{cases}`,
+                    String.raw`\begin{cases}`
+                  + String.raw`  32x_1-25x_2+37x_3=65, \\`
+                  + String.raw`  5x_1+3.4x_2+17x_3=-2.4, \\`
+                  + String.raw`  16x_1+23x_2-15x_3=43. \\`
+                  + String.raw`\end{cases}`,
+                    String.raw`\begin{cases}`
+                  + String.raw`  33x_1+21x_2+28x_3=8, \\`
+                  + String.raw`  41x_1+37x_2+48x_3=57, \\`
+                  + String.raw`  27x_1+18x_2+11x_3=32. \\`
+                  + String.raw`\end{cases}`,
+                    String.raw`\begin{cases}`
+                  + String.raw`  32x_1-115x_2+38x_3=28, \\`
+                  + String.raw`  8x_1+13x_2-64x_3=-65, \\`
+                  + String.raw`  24x_1+72x_2-12x_3=45. \\`
+                  + String.raw`\end{cases}`,
+                    String.raw`\begin{cases}`
+                  + String.raw`  9x_1+27x_2-38x_3=24, \\`
+                  + String.raw`  25x_1+58x_2-5x_3=35, \\`
+                  + String.raw`  45x_1-21x_2+32x_3=-12. \\`
+                  + String.raw`\end{cases}`,
+                    String.raw`\begin{cases}`
+                  + String.raw`  41x_1+52x_2-58x_3=70, \\`
+                  + String.raw`  38x_1-31x_2+40x_3=53, \\`
+                  + String.raw`  78x_1+53x_2-63x_3=58. \\`
+                  + String.raw`\end{cases}`,
+                    String.raw`\begin{cases}`
+                  + String.raw`  28x_1+38x_2-32x_3=45, \\`
+                  + String.raw`  25x_1-28x_2+33x_3=71, \\`
+                  + String.raw`  65x_1-71x_2+48x_3=63. \\`
+                  + String.raw`\end{cases}`
+                  ];
+    var n = Math.trunc(randge(0, slaes.length));
+    var dfht = '<div class="content01-div">'
+      +   '<a href="https://colab.research.google.com/drive/1z1qvkR6OkSMLUnrErX2i9r2MSkiUwmcZ?usp=sharing">'
+      +   'Посилання</a> на завдання'
+      +   '<hr/><b>Ваша система рівнянь:</b> $$'+slaes[n]+'$$'
+      + '</div>';
+    $('#content').html(dfht);
+    MathJax.Hub.Queue(["Typeset",MathJax.Hub,document.getElementById("content")]);
+    console.log('SLAE: '+slaes[n]);
   }
 </script>
 
@@ -163,6 +250,7 @@ function pad(num, size) {
       switch($('#sel-widn').val()) {
         case '01': lab_pract_01(); break;
         case '02': lab_pract_02(rand); break;
+        case '03': lab_pract_03(rand); break;
         default:
           alert('Вибачте, ще не готово...');
           break;

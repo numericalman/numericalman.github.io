@@ -146,7 +146,7 @@ function pad(num, size) {
 <script>
   /////////////////////////////////////////////////////////////////// ЛР 03 ///
   function lab_pract_03(rand) {
-    console.log('Лабораторно-практична робота №2');
+    console.log('Лабораторно-практична робота №3');
     const randge = function(from, to) { return rand_range(rand, from, to); }
     const slaes = [ String.raw`\begin{cases}`
                   + String.raw`  38x_1+67x_2-12x_3=52, \\`
@@ -232,6 +232,98 @@ function pad(num, size) {
 </script>
 
 <script>
+  /////////////////////////////////////////////////////////////////// ЛР 04 ///
+  function lab_pract_04(rand) {
+    console.log('Лабораторно-практична робота №2');
+    const randge = function(from, to) { return rand_range(rand, from, to); }
+    const slaes = [ String.raw`\begin{cases}`
+                  + String.raw`  19x_1+23x_2+ 8x_3-63x_4=-150, \\`
+                  + String.raw` -99x_1+ 2x_2-62x_3+ 8x_4=130, \\`
+                  + String.raw`   3x_1-72x_2+33x_3- 7x_4=-110, \\`
+                  + String.raw`   9x_1+13x_2-58x_3+28x_4=170. \\`
+                  + String.raw`\end{cases}`,
+                    String.raw`\begin{cases}`
+                  + String.raw`  -7x_1+138x_2+ 5x_3-41x_4=180, \\`
+                  + String.raw`  48x_1-  8x_2-13x_3      =-22, \\`
+                  + String.raw` -17x_1- 18x_2+13x_3+81x_4=33, \\`
+                  + String.raw`  -4x_1- 42x_2+89x_3+ 7x_4=-130. \\`
+                  + String.raw`\end{cases}`,
+                    String.raw`\begin{cases}`
+                  + String.raw`  11x_1+22x_2+ 3x_3-95x_4+72=0, \\`
+                  + String.raw`   -x_1+28x_2-17x_3+ 6x_4+21=0, \\`
+                  + String.raw`  52x_1-  x_2+12x_3+17x_4-117=0, \\`
+                  + String.raw`  17x_1-18x_2-79x_3      -81=0. \\`
+                  + String.raw`\end{cases}`,
+                    String.raw`\begin{cases}`
+                  + String.raw`  17x_1+  6x_2-108x_3+12x_4=-115, \\`
+                  + String.raw` -85x_1+  5x_2-  8x_3+14x_4=48, \\`
+                  + String.raw` -32x_1+113x_2+ 12x_3-11x_4=124, \\`
+                  + String.raw`  21x_1- 16x_2+ 36x_3-  x_4=88. \\`
+                  + String.raw`\end{cases}`,
+                    String.raw`\begin{cases}`
+                  + String.raw`  13x_1-112x_2+  9x_3- 6x_4=-48, \\`
+                  + String.raw` -83x_1+ 27x_2- 13x_3-11x_4=142, \\`
+                  + String.raw`  13x_1+ 18x_2+ 24x_3-57x_4=-72, \\`
+                  + String.raw` -11x_1-  5x_2+102x_3-12x_4=-234. \\`
+                  + String.raw`\end{cases}`,
+                    String.raw`\begin{cases}`
+                  + String.raw`  35x_1-27x_2-  x_3-  5x_4=-68, \\`
+                  + String.raw` -76x_1+21x_2+ 6x_3- 34x_4=-142, \\`
+                  + String.raw`  -5x_1+  x_2-32x_3- 12x_4=-57, \\`
+                  + String.raw`  12x_1-43x_2+ 4x_3-121x_4=214. \\`
+                  + String.raw`\end{cases}`,
+                    String.raw`\begin{cases}`
+                  + String.raw`  16x_1+ 24x_2-  x_3-35x_4=-121, \\`
+                  + String.raw`  12x_1-114x_2+ 8x_3+ 9x_4=83, \\`
+                  + String.raw`  23x_1-  8x_2+ 5x_3-75x_4=-65, \\`
+                  + String.raw` -86x_1+ 23x_2+18x_3+17x_4=142. \\`
+                  + String.raw`\end{cases}`,
+                    String.raw`\begin{cases}`
+                  + String.raw`  25x_1+22x_2+14x_3-  x_4=-156, \\`
+                  + String.raw`  -8x_1+12x_2+77x_3-32x_4=-58, \\`
+                  + String.raw` -12x_1+  x_2-32x_3+18x_4=-72, \\`
+                  + String.raw`  77x_1+14x_2- 6x_3+12x_4=121. \\`
+                  + String.raw`\end{cases}`,
+                    String.raw`\begin{cases}`
+                  + String.raw` -12x_1+ 5x_2+85x_3      =57, \\`
+                  + String.raw` -14x_1+66x_2+18x_3-24x_4=89, \\`
+                  + String.raw` -33x_1- 3x_2+84x_3+32x_4=-115, \\`
+                  + String.raw`  88x_1+23x_2-25x_3+16x_4=-124. \\`
+                  + String.raw`\end{cases}`,
+                    String.raw`\begin{cases}`
+                  + String.raw`  92x_1+  3x_2       + 4x_4-120=0, \\`
+                  + String.raw`         69x_2- 27x_3+ 8x_4+81=0, \\`
+                  + String.raw`  11x_1       -  3x_3+42x_4+17=0, \\`
+                  + String.raw` -33x_1       +107x_3-21x_4-92=0. \\`
+                  + String.raw`\end{cases}`,
+                    String.raw`\begin{cases}`
+                  + String.raw`  95x_1+  6x_2+ 12x_3- 14x_4=217, \\`
+                  + String.raw` -34x_1-  8x_2+106x_3- 14x_4=210, \\`
+                  + String.raw`  -4x_1+112x_2-  8x_3- 11x_4=-140, \\`
+                  + String.raw` -11x_1- 12x_2       +103x_4=80. \\`
+                  + String.raw`\end{cases}`,
+                    String.raw`\begin{cases}`
+                  + String.raw` -18x_1+48x_2      -21x_4=-117, \\`
+                  + String.raw`  93x_1+ 8x_2-11x_3+18x_4=51, \\`
+                  + String.raw` -13x_1-31x_2+  x_3+21x_4=102, \\`
+                  + String.raw`  -8x_1      +33x_3+72x_4=28. \\`
+                  + String.raw`\end{cases}`
+                  ];
+    var n = Math.trunc(randge(0, slaes.length));
+    var method = ['Якобі', 'Зейделя'][Math.trunc(randge(0,2))];
+    var dfht = '<div class="content01-div">'
+      +   '<a href="https://colab.research.google.com/drive/1n2OUqs7XI3qatYfmYFmbXhODBftCX13o?usp=sharing">'
+      +   'Посилання</a> на завдання'
+      +   '<hr/><b>Ви маєте вирішити систему:</b> $$'+slaes[n]+'$$'
+      +   `<br/><b>Використайте метод</b> <i>${method}</i>.`
+      + '</div>';
+    $('#content').html(dfht);
+    MathJax.Hub.Queue(["Typeset",MathJax.Hub,document.getElementById("content")]);
+    console.log(`method: ${method}`);
+  }
+</script>
+
+<script>
   $(function() {
     console.log("Loaded...");
     $('#inp-fullname').val(Cookies.get('fullname'));
@@ -251,6 +343,7 @@ function pad(num, size) {
         case '01': lab_pract_01(); break;
         case '02': lab_pract_02(rand); break;
         case '03': lab_pract_03(rand); break;
+        case '04': lab_pract_04(rand); break;
         default:
           alert('Вибачте, ще не готово...');
           break;

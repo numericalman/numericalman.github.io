@@ -63,6 +63,10 @@ body {
   text-align: left;
 }
 
+.content span {
+  background-color: LightSalmon;
+}
+
 /* Lab. 01 */
 .content01-div {
   padding: 10px 0 0 7%;
